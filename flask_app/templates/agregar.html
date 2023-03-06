@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>AGEREGAR ACTIVIDADES</title>
+</head>
+
+<body>
+<a href="/pagina1" class="btn btn-info">VOLVER A ACTIVIDADES</a>
+<a href="/inisesion" class="btn btn-info">Cerrar Sesión {{usuario.first_name}}</a>
+    <form action="/actividad/agregar" method="post" class="col-6 mx-auto">
+        <h2 class="text-center">Agregar Nueva Actividad</h2>
+                {% with messages = get_flashed_messages(category_filter=['actividad']) %}
+                {% if messages %}
+                <div class="alert alert-danger" role="alert">
+                    <strong>Atencion!!!!</strong>
+                    {% for message in messages %}
+                    <p>{{message}}</p>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                {% endwith %}
+        <div class="form-group">
+            <label for="actividad">Nombre de Actividad:</label>
+            <input type="text" name="actividad" class="form-control">
+        </div>
+        <div class="form-group">
+                    <label for="nro">Número de Actividad:</label>
+                    <input type="text" name="nro" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="description">Descripción:</label>
+            <textarea name="description" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="nivel">Nivel:</label>
+            <select name="nivel" id="nivel">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+        </div>
+        <input type="submit" value="Añadir Actividad" class="btn btn-success">
+    </form>
+</body>
+
+</html>
